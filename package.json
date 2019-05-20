@@ -1,0 +1,33 @@
+{
+  "name": "server-node",
+  "version": "1.0.0",
+  "description": "System VCS Server NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dantecarlo/System-VCS-SERVER-Nodejs.git"
+  },
+  "author": "Dante Nunez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dantecarlo/System-VCS-SERVER-Nodejs/issues"
+  },
+  "homepage": "https://github.com/dantecarlo/System-VCS-SERVER-Nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.0",
+    "graphql-import": "^0.7.1",
+    "graphql-tools": "^4.0.4",
+    "mongoose": "^5.5.10",
+    "nodemon": "^1.19.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}

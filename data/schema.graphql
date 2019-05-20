@@ -1,0 +1,57 @@
+type Client {
+    id: ID
+    name: String
+    last_name: String
+    company: String
+    emails: [Email]
+    yob: Int
+    typ: TypClient
+    orders: [Order]
+  }
+
+  type Email {
+    email: String
+  }
+
+  type Order {
+    product: String
+    price: Int
+  }
+
+  enum TypClient {
+    Basic
+    Premium
+  }
+
+  type Query {
+    getClient(id: ID) : Client
+  }
+
+  input InputOrder {
+    product: String
+    price: Int
+  }
+
+  input InputEmail {
+    email: String
+  }
+
+  input InputClient {
+    id: ID
+    first_name: String
+    last_name: String
+    company: String
+    email: [InputEmail]
+    yob: Int
+    typ: TypClient
+    orders: [InputOrder]
+  }
+
+  type Mutation {
+    """ Create a new Client """
+    createClient(input: InputClient) : Client
+    """Update Client"""
+    updateClient(input: InputClient) : Client
+    """Delete Client"""
+    deleteClient(id: ID!) : String
+  }
