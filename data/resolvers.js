@@ -4,8 +4,16 @@ import { rejects } from 'assert';
 
 export const resolvers = {
 	Query: {
-		getClient: ({ id }) => {
-			return new Client(id, clientsDB[id]);
+		getClients: (root, { last }) => {
+			return Clients.find({}).limit(last);
+		},
+		getClient: (root, { id }) => {
+			return new Promise((resolve, object) => {
+				Clients.findById(id, (error, client) => {
+					if (error) rejects(error);
+					else resolve(client);
+				});
+			});
 		}
 	},
 	Mutation: {
@@ -35,14 +43,14 @@ export const resolvers = {
 					else resolve(client);
 				});
 			});
-    },
-    deleteClient: (root, { id }) => {
-      return new Promise((resolve, object) => {
-        Clients.findOneAndRemove({ _id : id}, (error) => {
+		},
+		deleteClient: (root, { id }) => {
+			return new Promise((resolve, object) => {
+				Clients.findOneAndRemove({ _id: id }, (error) => {
 					if (error) rejects(error);
-					else resolve("Delete Successful");
-        })
-      });
-    }
+					else resolve('Delete Successful');
+				});
+			});
+		}
 	}
 };
